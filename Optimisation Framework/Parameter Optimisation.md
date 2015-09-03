@@ -365,7 +365,7 @@ Run #23, Parameters: 30, 17
 Run #24, Parameters: 30, 20
 Tue Sep  1 12:38:02 2015
 ```
-```
+
 <div style="max-height:1000px;max-width:1500px;overflow:auto;">
 <table border="1" class="dataframe">
   <thead>
@@ -737,7 +737,6 @@ results_df_omega = results_df.pivot(index=param_name_1, columns=param_name_2, va
 results_df_calmar = results_df.pivot(index=param_name_1, columns=param_name_2, values='calmar_ratio') 
 
 results_df
-```
 ```
 <div style="max-height:1000px;max-width:1500px;overflow:auto;">
 <table border="1" class="dataframe">
@@ -1137,7 +1136,6 @@ results_df
   </tbody>
 </table>
 </div>
-```
 
 ####Heatmaps - Small
 ```python
