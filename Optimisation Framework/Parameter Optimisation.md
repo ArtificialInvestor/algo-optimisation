@@ -12,7 +12,7 @@
 ###1. Setup Environment
 ####Import Libraries
 
-```p
+```python
 import zipline
 import pytz
 from datetime import datetime
@@ -39,7 +39,7 @@ import time
 ```
 
 ####Define functions for evaluating performance
-```p
+```python
 # define a bunch of performance statistics for analysis of our backtests
 def normalize(returns, starting_value=1):
 return starting_value * (returns / returns.iloc[0])
@@ -228,13 +228,13 @@ return all_stats_df
 
 ###2. Import Algorithm
 ####Load data for backtests
-```p
+```python
 data = get_pricing(['xx', 'xxx', 'etc..'],start_date='2014-10-01',end_date = '2015-01-01',frequency='minute')
 ```
 
 ####Define Algorithm
 Place Initialize here with parameters outside of function
-```p
+```python
 #Parameters
 hedge_lookback = 20
 z_window = 20
@@ -245,21 +245,21 @@ def initialize(context):
 ```
 
 Place Handle Data here 
-```p
+```python
 def handle_data(context, data):
     #PLACE LOGIC HERE
     pass
 ```
 
 Any other functions go here that are called 
-```p
+```python
 def function_insert(context,data):
     #PLACE LOGIC OR DELETE
     pass
 ```
 
 ####Run test to ensure algorithm is functioning
-```p
+```python
 # RUN this cell to run a single backtest
 algo_obj = TradingAlgorithm(initialize=initialize, handle_data=handle_data, 
                             data_frequency='minute')
@@ -275,7 +275,7 @@ perf_returns = perf_manual.returns     # grab the daily returns from the algo ba
 ####Setup Parameters
 
 Ensure you decide if you are using int or float
-```p
+```python
 param_range_1 = map(int, np.linspace(20, 30, 5))  
 param_range_2 = map(float, np.around(np.linspace(1, 2, 5),decimals=4)) 
 print(param_range_1,param_range_2)
@@ -285,7 +285,7 @@ print(param_range_1,param_range_2)
 ```
 
 ####Creating Tests - This will take hours!
-```p
+```python
 # Show time when all the backtests started
 print time.ctime()
 
@@ -717,31 +717,28 @@ Tue Sep  1 12:38:02 2015
 
 ###4. Review Performance
 ####Tabulated Results
+```python
+# you should modify these 2 string labels to match the variables which you ran the above _for_ loops over
+# it's just to label the axes properly in the heatmaps
 
+param_name_1 = 'parameter_1'
+param_name_2 = 'parameter_2'
 
-    # you should modify these 2 string labels to match the variables which you ran the above _for_ loops over
-    # it's just to label the axes properly in the heatmaps
-    
-    param_name_1 = 'parameter_1'
-    param_name_2 = 'parameter_2'
-    
-    results_df[param_name_1] = results_df.param_1
-    results_df[param_name_2] = results_df.param_2
-    
-    results_df_sharpe = results_df.pivot(index=param_name_1, columns=param_name_2, values='sharpe_ratio') 
-    results_df_max_drawdown = results_df.pivot(index=param_name_1, columns=param_name_2, values='max_drawdown') 
-    results_df_annual_return = results_df.pivot(index=param_name_1, columns=param_name_2, values='annual_return') 
-    results_df_volatility = results_df.pivot(index=param_name_1, columns=param_name_2, values='annual_volatility') 
-    results_df_stability = results_df.pivot(index=param_name_1, columns=param_name_2, values='stability') 
-    results_df_sortino = results_df.pivot(index=param_name_1, columns=param_name_2, values='sortino_ratio') 
-    results_df_omega = results_df.pivot(index=param_name_1, columns=param_name_2, values='omega_ratio') 
-    results_df_calmar = results_df.pivot(index=param_name_1, columns=param_name_2, values='calmar_ratio') 
-    
-    results_df
+results_df[param_name_1] = results_df.param_1
+results_df[param_name_2] = results_df.param_2
 
+results_df_sharpe = results_df.pivot(index=param_name_1, columns=param_name_2, values='sharpe_ratio') 
+results_df_max_drawdown = results_df.pivot(index=param_name_1, columns=param_name_2, values='max_drawdown') 
+results_df_annual_return = results_df.pivot(index=param_name_1, columns=param_name_2, values='annual_return') 
+results_df_volatility = results_df.pivot(index=param_name_1, columns=param_name_2, values='annual_volatility') 
+results_df_stability = results_df.pivot(index=param_name_1, columns=param_name_2, values='stability') 
+results_df_sortino = results_df.pivot(index=param_name_1, columns=param_name_2, values='sortino_ratio') 
+results_df_omega = results_df.pivot(index=param_name_1, columns=param_name_2, values='omega_ratio') 
+results_df_calmar = results_df.pivot(index=param_name_1, columns=param_name_2, values='calmar_ratio') 
 
-
-
+results_df
+```
+```
 <div style="max-height:1000px;max-width:1500px;overflow:auto;">
 <table border="1" class="dataframe">
   <thead>
@@ -1143,7 +1140,7 @@ Tue Sep  1 12:38:02 2015
 ```
 
 ####Heatmaps - Small
-```p
+```python
 fig = plt.figure(figsize=(15,15))
 
 ax1 = fig.add_subplot(3,3,1)
@@ -1188,7 +1185,7 @@ for ax in fig.get_axes():
 
 
 ####Heatmaps - Large
-```p
+```python
 fig = plt.figure(figsize=(15,80))
 
 ax1 = fig.add_subplot(8,1,1)
